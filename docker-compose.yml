@@ -1,0 +1,28 @@
+container_name: pydgin-container
+
+elasticsearch:
+  restart: always
+  image: elasticsearch:2.2.0
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  volumes:
+    - ./elasticsearch/config:/usr/share/elasticsearch/config 
+    - ./elasticsearch/esdata:/usr/share/elasticsearch/data
+  environment:
+    - ES_HEAP_SIZE=2g
+
+postgres:
+  restart: always
+  image: postgres:latest
+  volumes_from:
+    - data
+  ports:
+    - "5432:5432"
+
+data:
+  restart: always
+  image: postgres:latest
+  volumes:
+    - /var/lib/postgresql
+  command: "true"
