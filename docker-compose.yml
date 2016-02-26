@@ -1,3 +1,14 @@
+pydgin:
+  restart: always
+  build: ./pydgin
+  ports:
+    - "8000:8000"
+  links:
+    - postgres:postgres
+  volumes:
+    - /usr/src/app
+  env_file: .env
+  command: /usr/local/bin/gunicorn pydgin.wsgi:application -w 2 -b :8000
 
 elasticsearch:
   restart: always
@@ -25,3 +36,4 @@ data:
   volumes:
     - /var/lib/postgresql
   command: "true"
+
