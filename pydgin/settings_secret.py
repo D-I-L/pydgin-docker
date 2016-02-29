@@ -59,7 +59,7 @@ INCLUDE_USER_UPLOADS = False
 # elastic search engine
 ELASTIC = {
     'default': {
-        'ELASTIC_URL': ['http://localhost:9200/'],
+        'ELASTIC_URL': ['http://elasticsearch:9200/'],
         'VERSION': {'major': 2},
         'DOCUMENT_FACTORY': 'core.document.PydginDocument',
         'IDX': {
