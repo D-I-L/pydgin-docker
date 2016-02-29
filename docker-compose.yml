@@ -5,6 +5,7 @@ pydgin:
     - "8000:8000"
   links:
     - postgres:postgres
+    - elasticsearch:elasticsearch
   volumes:
     - /usr/src/app
     - ./pydgin/settings_secret.py:/usr/src/app/pydgin/settings_secret.py
