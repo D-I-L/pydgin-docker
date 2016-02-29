@@ -7,6 +7,7 @@ pydgin:
     - postgres:postgres
   volumes:
     - /usr/src/app
+    - ./pydgin/settings_secret.py:/usr/src/app/pydgin/settings_secret.py
   env_file: .env
   command: /usr/local/bin/gunicorn pydgin.wsgi:application -w 2 -b :8000
 
@@ -29,6 +30,10 @@ postgres:
     - data
   ports:
     - "5432:5432"
+  environment:
+    POSTGRES_USER: webuser
+    POSTGRES_PASSWORD: webuser
+    POSTGRES_DB: pydgin_authdb
 
 data:
   restart: always
@@ -36,4 +41,3 @@ data:
   volumes:
     - /var/lib/postgresql
   command: "true"
-
