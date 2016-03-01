@@ -1,4 +1,6 @@
 #!/bin/bash
+
+git pull
 python manage.py makemigrations           # Apply database migrations
 python manage.py migrate
 python manage.py makemigrations elastic
