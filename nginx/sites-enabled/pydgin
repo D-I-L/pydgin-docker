@@ -6,7 +6,7 @@ server {
 
     location /static {
     	autoindex on;
-        alias /usr/src/app/pydgin/apache;
+        alias /usr/src/app/pydgin/pydgin/apache;
     }
 
     location / {
