@@ -1,7 +1,8 @@
 # pydgin-docker
 
 Install the [docker toolbox](https://www.docker.com/products/docker-toolbox).
-Notes for docker on MacOSX using docker-machine-nfs:
+Notes for docker on MacOSX (assumes [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
+is also installed).:
 ```
 docker-machine create -d virtualbox --virtualbox-memory 8096 dev-nfs
 docker-machine-nfs dev-nfs
