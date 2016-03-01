@@ -6,7 +6,7 @@ pydgin:
   links:
     - postgres:postgres
     - elasticsearch:elasticsearch
-  entrypoint: /usr/src/app/entrypoint.sh
+  entrypoint: sh /usr/src/app/entrypoint.sh
   volumes:
     - /usr/src/app/pydgin
     - ./pydgin/settings_secret.py:/usr/src/app/pydgin/pydgin/settings_secret.py
