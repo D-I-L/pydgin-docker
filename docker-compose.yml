@@ -9,7 +9,6 @@ pydgin:
   volumes:
     - /usr/src/app
     - ./pydgin/settings_secret.py:/usr/src/app/pydgin/settings_secret.py
-    - /Users/tjc29/eclipse/workspace/pydgin/pydgin/apache:/usr/src/app/pydgin/apache
   env_file: .env
   command: /usr/local/bin/gunicorn pydgin.wsgi:application -w 2 -b :8000
 
