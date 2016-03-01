@@ -1,8 +1,8 @@
 # pydgin-docker
 
 Install the [docker toolbox](https://www.docker.com/products/docker-toolbox).
-Notes for docker on MacOSX (assumes [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
-is also installed):
+For docker on MacOSX you can use [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
+to use NFS (this avoids permission issues with mounted volumes):
 ```
 docker-machine create -d virtualbox --virtualbox-memory 8096 dev-nfs
 docker-machine-nfs dev-nfs
@@ -11,7 +11,7 @@ sudo nfsd restart
 eval "$(docker-machine env dev-nfs)"
 ```
 
-After connecting to the docker machine:
+After creating and connecting to the docker machine (e.g. dev-nfs):
 ```
 docker-compose build
 docker-compose up postgres    # creates webuser role
