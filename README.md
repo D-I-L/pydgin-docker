@@ -16,3 +16,9 @@ docker-compose up postgres    # creates webuser role
 docker stop $(docker ps -q)
 docker-compose up
 ```
+
+This assumes the elasticsearch indices are in ./elasticsearch/esdata/ on the host machine. Run 
+the following command to find the IP address of the running nginx server:
+```
+docker-machine ip dev-nfs
+```
