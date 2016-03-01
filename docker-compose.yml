@@ -22,6 +22,10 @@ elasticsearch:
   volumes:
     - ./elasticsearch/config:/usr/share/elasticsearch/config 
     - ./elasticsearch/esdata:/usr/share/elasticsearch/data
+  cap_add:
+    - IPC_LOCK
+  ulimits:
+    memlock: -1
   environment:
     - ES_HEAP_SIZE=2g
 
@@ -50,8 +54,7 @@ postgres:
     POSTGRES_DB: pydgin_authdb
 
 data:
-  restart: always
   image: postgres:latest
   volumes:
     - /var/lib/postgresql
-  command: "true"
+  command: echo "postgres data colume"
