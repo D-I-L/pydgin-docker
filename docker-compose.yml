@@ -6,11 +6,12 @@ pydgin:
   links:
     - postgres:postgres
     - elasticsearch:elasticsearch
+  entrypoint: /usr/src/app/entrypoint.sh
   volumes:
     - /usr/src/app
     - ./pydgin/settings_secret.py:/usr/src/app/pydgin/settings_secret.py
+    - ./pydgin/entrypoint.sh:/usr/src/app/entrypoint.sh
   env_file: .env
-  command: /usr/local/bin/gunicorn pydgin.wsgi:application -w 2 -b :8000
 
 elasticsearch:
   restart: always
@@ -33,8 +34,6 @@ nginx:
   build: ./nginx/
   ports:
     - "80:80"
-  volumes:
-    - /www/static
   volumes_from:
     - pydgin
   links:
@@ -56,4 +55,4 @@ data:
   image: postgres:latest
   volumes:
     - /var/lib/postgresql
-  command: echo "postgres data colume"
+  command: echo "postgres data volume"
