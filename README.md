@@ -11,7 +11,7 @@ sudo nfsd restart
 
 eval "$(docker-machine env dev-nfs)"
 docker-compose build
-docker-compose up postgres    # creates the webuser roles
+docker-compose up postgres    # creates webuser role
 docker stop $(docker ps -q)
 docker-compose up
 
