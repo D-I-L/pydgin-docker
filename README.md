@@ -15,11 +15,4 @@ docker-compose build
 docker-compose up postgres    # creates webuser role
 docker stop $(docker ps -q)
 docker-compose up
-
-docker-compose run pydgin /usr/local/bin/python manage.py collectstatic
-docker-compose run pydgin /usr/local/bin/python manage.py makemigrations
-docker-compose run pydgin /usr/local/bin/python manage.py migrate
-docker-compose run pydgin /usr/local/bin/python manage.py migrate elastic
-docker-compose run pydgin /usr/local/bin/python manage.py makemigrations elastic
 ```
-
