@@ -54,3 +54,16 @@ data:
   volumes:
     - /var/lib/postgresql
   command: echo "postgres data volume"
+  
+#rserve:
+#  restart: always
+#  build: ./rserve/
+#  entrypoint: /usr/src/entrypoint.sh
+#  volumes:
+#    - /usr/src/
+#    - ./rserve/entrypoint.sh:/usr/src/entrypoint.sh
+#    - ./rserve/rserve.conf:/usr/src/rserve.conf
+#    - ./rserve/rserve.R:/usr/src/rserve.R
+#    - ./rserve/vcf2ld.R:/tmp/vcf2ld.R
+#  ports:
+#    - "6311:6311"
