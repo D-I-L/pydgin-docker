@@ -1,6 +1,7 @@
 pydgin:
   restart: always
-  build: ./pydgin
+#  build: ./pydgin
+  image: tcarver/pydgin-docker:pydgin-latest
   ports:
     - "8001:8000"
   links:
