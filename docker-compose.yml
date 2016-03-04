@@ -7,6 +7,7 @@ pydgin:
   links:
     - postgres:postgres
     - elasticsearch:elasticsearch
+#    - rserve:rserve
   entrypoint: sh /usr/src/app/entrypoint.sh
   volumes:
     - /usr/src/app/pydgin
@@ -59,12 +60,13 @@ data:
 #rserve:
 #  restart: always
 #  build: ./rserve/
-#  entrypoint: /usr/src/entrypoint.sh
+#  entrypoint: /usr/share/rserve/entrypoint.sh
 #  volumes:
-#    - /usr/src/
-#    - ./rserve/entrypoint.sh:/usr/src/entrypoint.sh
-#    - ./rserve/rserve.conf:/usr/src/rserve.conf
-#    - ./rserve/rserve.R:/usr/src/rserve.R
+#    - /usr/share/rserve/config
+#    - /usr/share/rserve/data
+#    - ./rserve/entrypoint.sh:/usr/share/rserve/entrypoint.sh
 #    - ./rserve/vcf2ld.R:/tmp/vcf2ld.R
+#    - ./rserve/config:/usr/share/rserve/config/
+#    - ./rserve/data:/usr/share/rserve/data/
 #  ports:
 #    - "6311:6311"
