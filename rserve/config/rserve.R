@@ -14,7 +14,7 @@ if (is.null(root) || nchar(root) == 0) root <- "/Users/tjc29/"
 
 ## run the server in the "tmp" directory of the root in
 ## case some files need to be created
-setwd(paste(root,"tmp",sep='/'))
+#setwd(paste(root,"tmp",sep='/'))
 
 ## if you have multiple servers it's good to know which machine this is
 host <- tolower(system("hostname -s", TRUE))
@@ -30,9 +30,9 @@ for (pkg in pkgs) cat(pkg, ": ",require(pkg, quietly=FALSE, character.only=TRUE)
 
 # RDS data
 cat("Loading 1000 genome data...\n")
-KG_DIR='/Users/tjc29/1000genome/'
+KG_DIR='/usr/share/rserve/data/'
 CURRENT_BUILD='grch38'
-snp_data_src <- c("EUR", "AMR")
+snp_data_src <- c("EUR")
 for (src in snp_data_src) {
   cat(src, "\n")
   data.files <- list.files(path=paste0(KG_DIR,'/',CURRENT_BUILD,'/',src), pattern='*.rds$', full.names = TRUE)
@@ -41,6 +41,7 @@ for (src in snp_data_src) {
   assign(src, tmp)
   rm(tmp)
 }
+cat("Loaded data\n")
 
 # read population and samples
 tmp <- read.table(paste0(KG_DIR,'/',CURRENT_BUILD,'/20131219.populations.tsv'),header=TRUE,sep = "\t",colClasses = c(rep("NULL", 1), rep("character", 2), rep("NULL", 6)))
@@ -49,6 +50,8 @@ tmp<-na.omit(tmp)
 POPS<-data.frame(tmp[,-1], row.names=tmp[,1])
 rm(tmp)
 SAMPLES <- read.table(paste0(KG_DIR,'/',CURRENT_BUILD,'/integrated_call_samples_v3.20130502.ALL.panel'),row.names=1,header=TRUE)
+
+cat("Done\n")
 
 ## init() is a special function that will be called from
 ## each script. Do what you want here - it is usually a good idea

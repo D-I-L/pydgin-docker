@@ -1,3 +1,4 @@
 elasticsearch/esdata/*
+rserve/data/*
 .project
 .pydevproject
