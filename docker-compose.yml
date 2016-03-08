@@ -1,57 +1,59 @@
-pydgin:
-  restart: always
-#  build: ./pydgin
-  image: tcarver/pydgin-docker:pydgin-latest
-  ports:
-    - "8001:8000"
-  links:
-    - postgres:postgres
-    - elasticsearch:elasticsearch
-  entrypoint: sh /usr/src/app/entrypoint.sh
-  volumes:
-    - /usr/src/app/pydgin
-    - ./pydgin/settings_secret.py:/usr/src/app/pydgin/pydgin/settings_secret.py
-    - ./pydgin/entrypoint.sh:/usr/src/app/entrypoint.sh
-  env_file: .env
+version: '2'
+services:
+  pydgin:
+    restart: always
+#    build: ./pydgin
+    image: tcarver/pydgin-docker:pydgin-latest
+    ports:
+      - "8001:8000"
+    links:
+      - postgres:postgres
+      - elasticsearch:elasticsearch
+    entrypoint: sh /usr/src/app/entrypoint.sh
+    volumes:
+      - /usr/src/app/pydgin
+      - ./pydgin/settings_secret.py:/usr/src/app/pydgin/pydgin/settings_secret.py
+      - ./pydgin/entrypoint.sh:/usr/src/app/entrypoint.sh
+    env_file: .env
 
-elasticsearch:
-  restart: always
-  image: elasticsearch:2.2.0
-  ports:
-    - "9201:9200"
-  volumes:
-    - ./elasticsearch/config:/usr/share/elasticsearch/config 
-    - ./elasticsearch/esdata:/usr/share/elasticsearch/data
-  cap_add:
-    - IPC_LOCK
-  ulimits:
-    memlock: -1
-  environment:
-    - ES_HEAP_SIZE=2g
-  user: elasticsearch
+  elasticsearch:
+    restart: always
+    image: elasticsearch:2.2.0
+    ports:
+      - "9201:9200"
+    volumes:
+      - ./elasticsearch/config:/usr/share/elasticsearch/config 
+      - ./elasticsearch/esdata:/usr/share/elasticsearch/data
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
+    environment:
+      - ES_HEAP_SIZE=2g
+    user: elasticsearch
 
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "80:80"
-  volumes_from:
-    - pydgin
-  links:
-    - pydgin:pydgin
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes_from:
+      - pydgin
+    links:
+      - pydgin:pydgin
 
-postgres:
-  restart: always
-  image: postgres:latest
-  volumes_from:
-    - data
-  environment:
-    POSTGRES_USER: webuser
-    POSTGRES_PASSWORD: webuser
-    POSTGRES_DB: pydgin_authdb
+  postgres:
+    restart: always
+    image: postgres:latest
+    volumes_from:
+      - data
+    environment:
+      POSTGRES_USER: webuser
+      POSTGRES_PASSWORD: webuser
+      POSTGRES_DB: pydgin_authdb
 
-data:
-  image: postgres:latest
-  volumes:
-    - /var/lib/postgresql
-  command: echo "postgres data volume"
+  data:
+    image: postgres:latest
+    volumes:
+      - /var/lib/postgresql
+    command: echo "postgres data volume"
