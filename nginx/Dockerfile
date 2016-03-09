@@ -13,5 +13,3 @@ RUN openssl req \
     -subj "/C=UK/ST=Cambridge/L=Cambridge/O=Dis/CN=www.example.com" \
     -keyout /etc/nginx/ssl/nginx.key \
     -out /etc/nginx/ssl/nginx.crt
-
-RUN ls -l /etc/nginx/ssl/
