@@ -36,7 +36,10 @@ services:
     restart: always
     build: ./nginx/
     ports:
-      - "80:80"
+      - "443:443"
+#    volumes:
+#      - ./nginx/ssl/nginx.crt:/etc/nginx/ssl/nginx.crt
+#      - ./nginx/ssl/nginx.key:/etc/nginx/ssl/nginx.key
     volumes_from:
       - pydgin
     links:
