@@ -38,8 +38,8 @@ services:
     ports:
       - "443:443"
 #    volumes:
-#      - ./nginx/ssl/nginx.crt:/etc/nginx/ssl/nginx.crt
-#      - ./nginx/ssl/nginx.key:/etc/nginx/ssl/nginx.key
+#      - ./nginx/ssl/:/etc/nginx/ssl/
+#      - ./nginx/sites-enabled:/etc/nginx/conf.d/
     volumes_from:
       - pydgin
     links:
