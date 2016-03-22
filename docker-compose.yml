@@ -37,7 +37,7 @@ services:
     build: ./nginx/
     ports:
       - "443:443"
-#    volumes:
+    volumes:
 #      - ./nginx/ssl/:/etc/nginx/ssl/
 #      - ./nginx/sites-enabled:/etc/nginx/conf.d/
        - /usr/src/app/pydgin/pydgin/apache/data
