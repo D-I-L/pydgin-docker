@@ -16,6 +16,5 @@ python manage.py collectstatic --noinput  # Collect static files
 # production options
 sed -i "s|DEBUG = True|DEBUG = False|" pydgin/settings.py
 sed -i "s|ALLOWED_HOSTS = \[\]|ALLOWED_HOSTS = \[\'\*\'\]|" pydgin/settings.py
-#sed -i "s|{% static \"img/140X140.gif\" %}||" pydgin/templates/front_page.html
 
 /usr/local/bin/gunicorn pydgin.wsgi:application -w 2 -b :8000
