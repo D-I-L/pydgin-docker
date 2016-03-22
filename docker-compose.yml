@@ -40,6 +40,8 @@ services:
 #    volumes:
 #      - ./nginx/ssl/:/etc/nginx/ssl/
 #      - ./nginx/sites-enabled:/etc/nginx/conf.d/
+       - /usr/src/app/pydgin/pydgin/apache/data
+       - ./nginx/data:/usr/src/app/pydgin/pydgin/apache/data
     volumes_from:
       - pydgin
     links:
