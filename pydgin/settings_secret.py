@@ -47,7 +47,7 @@ DATABASES = {
 
 
 RSERVE = {
-    'HOST': 'mousehole',
+    'HOST': 'rserve',
     'PORT': 6311
 }
 # remember this is the key of the auth_db DATABASES settings
