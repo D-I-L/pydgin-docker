@@ -47,7 +47,7 @@ DATABASES = {
 
 
 RSERVE = {
-    'HOST': 'rserve',
+    'HOST': 'mousehole',
     'PORT': 6311
 }
 # remember this is the key of the auth_db DATABASES settings
@@ -171,3 +171,6 @@ EMAIL_HOST_USER = ''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+
