@@ -115,11 +115,12 @@ ELASTIC = {
                 'auth_public': True
             },
             'REGION': {
-                'name': 'regions_v0.0.5',
+                'name': 'regions_latest',
                 'idx_type': {
                     'STUDY_HITS': {'type': 'hits', 'search': True,
                                    'auth_public': True, 'class': 'region.document.StudyHitDocument'},
-                    'DISEASE_LOCUS': {'type': 'disease_locus',  'auth_public': True},
+                    'DISEASE_LOCUS': {'type': 'disease_locus',  'auth_public': True,
+                                      'class': 'region.document.DiseaseLocusDocument'},
                     'REGION': {'type': 'region', 'search': True,
                                'auth_public': True, 'class': 'region.document.RegionDocument'}
                 },
@@ -127,7 +128,7 @@ ELASTIC = {
                 'auth_public': True
             },
             'STUDY': {
-                'name': 'studies_v0.0.2',
+                'name': 'studies_latest',
                 'idx_type': {
                     'STUDY': {'type': 'studies', 'auth_public': True, 'search': True,
                               'class': 'study.document.StudyDocument'}
@@ -138,10 +139,64 @@ ELASTIC = {
             'CRITERIA': {
                 'name': 'imb_criteria',
                 'idx_type': {
-                    'GENE': {'type': 'gene',  'auth_public': True},
-                    'MARKER': {'type': 'marker',  'auth_public': True}
+                    'GENE': {'type': 'gene', 'auth_public': True},
+                    'MARKER': {'type': 'marker', 'auth_public': True}
                 },
                 'auth_public': True
+            },
+            'GENE_CRITERIA': {
+                'name': 'pydgin_imb_criteria_gene',
+                'idx_type': {
+                    'IS_GENE_IN_MHC': {'type': 'is_gene_in_mhc',  'auth_public': True},
+                    'CAND_GENE_IN_STUDY': {'type': 'cand_gene_in_study',  'auth_public': True},
+                    'CAND_GENE_IN_REGION': {'type': 'cand_gene_in_region',  'auth_public': True},
+                    'GENE_IN_REGION': {'type': 'gene_in_region',  'auth_public': True},
+                    'EXONIC_INDEX_SNP_IN_REGION': {'type': 'exonic_index_snp_in_gene',  'auth_public': True},
+                },
+                'auth_public': True
+            },
+            'MARKER_CRITERIA': {
+                'name': 'pydgin_imb_criteria_marker',
+                'idx_type': {
+                    'IS_MARKER_IN_MHC': {'type': 'is_marker_in_mhc',  'auth_public': True},
+                    'IS_AN_INDEX_SNP': {'type': 'is_an_index_snp',  'auth_public': True},
+                    'MARKER_IS_GWAS_SIGNIFICANT_STUDY': {'type': 'marker_is_gwas_significant_in_study',  'auth_public': True},
+                    'RSQ_WITH_INDEX_SNP': {'type': 'rsq_with_index_snp',  'auth_public': True},
+                    'MARKER_IS_GWAS_SIGNIFICANT_IC': {'type': 'marker_is_gwas_significant_in_ic',  'auth_public': True},
+                },
+                'auth_public': True
+            },
+            'REGION_CRITERIA': {
+                'name': 'pydgin_imb_criteria_region',
+                'idx_type': {
+                    'IS_REGION_IN_MHC': {'type': 'is_region_in_mhc',  'auth_public': True},
+                    'IS_REGION_FOR_DISEASE': {'type': 'is_region_for_disease',  'auth_public': True},
+                },
+                'auth_public': True
+            },
+            'STUDY_CRITERIA': {
+                'name': 'pydgin_imb_criteria_study',
+                'idx_type': {
+                    'STUDY_FOR_DISEASE': {'type': 'study_for_disease',  'auth_public': True},
+                },
+                'auth_public': True
+            },
+            'IC_STATS': {
+               'name': 'hg38_ic_statistics',
+               'idx_type': {
+                   'UC_LIU': {'type': 'uc_liu', 'auth_public': True},
+                   'CRO_LIU': {'type': 'cro_liu', 'auth_public': True},
+                   'CEL_TRYNKA': {'type': 'cel_trynka'},
+                   'T1D_ONENGUT': {'type': 't1d_onengut'}
+               },
+               'auth_public': True
+            },
+            'GWAS_STATS': {
+               'name': 'hg38_gwas_statistics',
+               'idx_type': {
+                   'RA_OKADA': {'type': 'ra_okada', 'auth_public': True}
+               },
+               'auth_public': True
             }
         },
         'TEST': 'auto_tests_tjc',
