@@ -4,8 +4,8 @@ services:
     restart: always
 #    build: ./pydgin
     image: tcarver/pydgin-docker:pydgin-latest
-    ports:
-      - "8001:8000"
+#   ports:
+#     - "8001:8000"
     links:
       - postgres:postgres
       - elasticsearch:elasticsearch
@@ -19,8 +19,8 @@ services:
   elasticsearch:
     restart: always
     image: elasticsearch:2.2.0
-    ports:
-      - "9201:9200"
+#   ports:
+#     - "9201:9200"
     volumes:
       - ./elasticsearch/config:/usr/share/elasticsearch/config 
       - ./elasticsearch/esdata:/usr/share/elasticsearch/data
