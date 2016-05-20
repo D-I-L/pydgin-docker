@@ -16,8 +16,8 @@ RUN unzip /usr/src/app/JBrowse-1.12.1.zip -d /usr/src/app/
 RUN rm -f /usr/src/app/JBrowse-1.12.1.zip
 RUN cd /usr/src/app/JBrowse-1.12.1 && ./setup.sh
 RUN mkdir /usr/src/app/JBrowse-1.12.1/data
-RUN git clone https://github.com/cmdcolin/gwasviewer.git /usr/src/app/JBrowse-1.12.1/plugin/GWASViewer
-RUN git clone https://github.com/tottlefields/jbrowse-pydginelastic.git /usr/src/app/JBrowse-1.12.1/plugin/PydginElastic
+RUN git clone https://github.com/cmdcolin/gwasviewer.git /usr/src/app/JBrowse-1.12.1/plugins/GWASViewer
+RUN git clone https://github.com/tottlefields/jbrowse-pydginelastic.git /usr/src/app/JBrowse-1.12.1/plugins/PydginElastic
 RUN mkdir /usr/src/app/pydgin/pydgin/apache
 RUN ln -s /usr/src/app/JBrowse-1.12.1/ /usr/src/app/pydgin/pydgin/apache/jbrowse
 WORKDIR /usr/src/app/pydgin
