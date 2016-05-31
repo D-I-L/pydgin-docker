@@ -4,6 +4,7 @@ RUN sed -i '/^mod-wsgi==/ d' pydgin/requirements-dev.txt
 RUN sed -i "s|'mod_wsgi.server',||" pydgin/pydgin/settings.py
 RUN pip install --no-cache-dir -r pydgin/requirements.txt
 RUN mkdir /usr/src/app/pydgin/log/
+RUN mkdir /usr/src/app/tcell/
 #
 # setup JBrowse
 RUN apt-get update && apt-get install -y \
@@ -20,4 +21,5 @@ RUN git clone https://github.com/cmdcolin/gwasviewer.git /usr/src/app/JBrowse-1.
 RUN git clone https://github.com/tottlefields/jbrowse-pydginelastic.git /usr/src/app/JBrowse-1.12.1/plugins/PydginElastic
 RUN mkdir /usr/src/app/pydgin/pydgin/apache
 RUN ln -s /usr/src/app/JBrowse-1.12.1/ /usr/src/app/pydgin/pydgin/apache/jbrowse
+RUN ln -s /usr/src/app/tcell/ /usr/src/app/pydgin/pydgin/apache/tcell
 WORKDIR /usr/src/app/pydgin
