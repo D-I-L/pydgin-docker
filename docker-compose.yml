@@ -17,6 +17,7 @@ services:
       - ./pydgin/settings_secret.py:/usr/src/app/pydgin/pydgin/settings_secret.py
       - ./pydgin/entrypoint.sh:/usr/src/app/entrypoint.sh
       - ./pydgin/jbrowse/data/:/usr/src/app/JBrowse-1.12.1/data/
+      - ./pydgin/tcell/:/usr/src/app/tcell/
     env_file: .env
 
   elasticsearch:
