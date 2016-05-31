@@ -85,7 +85,7 @@ ELASTIC = {
                 'auth_public': True
             },
             'MARKER': {
-                'name': 'dbsnp146', 'build': '38',
+                'name': 'dbsnp146', 'build': 38,
                 'idx_type': {
                     'MARKER': {'type': 'marker', 'description': 'dbsnp', 'search': True,
                                'auth_public': True, 'class': 'marker.document.MarkerDocument'},
@@ -97,10 +97,10 @@ ELASTIC = {
                 'suggester': True,
                 'auth_public': True
             },
-#             'MARKER_144': {
-#                 'name': 'dbsnp144', 'build': '38', 'auth_public': True,
-#                 'idx_type': {'MARKER': {'type': 'marker'}},
-#             },
+            'MARKER_146': {
+                'name': 'dbsnp146_grch37', 'build': '37', 'auth_public': True,
+                'idx_type': {'MARKER': {'type': 'marker'}},
+            },
 #             'MARKER_138': {
 #                 'name': 'dbsnp138', 'build': '37', 'auth_public': True,
 #                 'idx_type': {'MARKER': {'type': 'marker'}},
@@ -112,6 +112,14 @@ ELASTIC = {
                                 'class': 'disease.document.DiseaseDocument'}
                 },
                 'suggester': True,
+                'auth_public': True
+            },
+            'BAND': {
+                'name': 'bands_hg38',
+                'idx_type': {
+                    'BAND': {'type': 'bands', 'search': False, 'auth_public': True, 'class': 'core.document.FeatureDocument'},
+                    'CHROM': {'type': 'chromosome'}
+                },
                 'auth_public': True
             },
             'REGION': {
@@ -184,10 +192,21 @@ ELASTIC = {
             'IC_STATS': {
                'name': 'hg38_ic_statistics',
                'idx_type': {
-                   'UC_LIU': {'type': 'uc_liu', 'auth_public': True},
-                   'CRO_LIU': {'type': 'cro_liu', 'auth_public': True},
-                   'CEL_TRYNKA': {'type': 'cel_trynka'},
-                   'T1D_ONENGUT': {'type': 't1d_onengut'}
+                        'AS_IGAS': {'type': 'as_igas', 'auth_public': True},
+                        'ATD_COOPER': {'type': 'atd_cooper'},
+                        'CRO_JOSTINS': {'type': 'cro_jostins'},
+                        'CRO_LIU': {'type': 'cro_liu'},
+                        'CEL_TRYNKA': {'type': 'cel_trynka', 'auth_public': True},
+                        'IBD_JOSTINS': {'type': 'ibd_jostins'},
+                        'JIA_HINKS': {'type': 'jia_hinks'},
+                        'MS_IMSGC': {'type': 'ms_imsgc', 'auth_public': True},
+                        'NAR_FARACO': {'type': 'nar_faraco', 'auth_public': True},
+                        'PBC_LIU': {'type': 'pbc_liu', 'auth_public': True},
+                        'PSO_TSOI': {'type': 'pso_tsoi'},
+                        'RA_EYRE': {'type': 'ra_eyre', 'auth_public': True},
+                        'T1D_ONENGUT': {'type': 't1d_onengut', 'auth_public': True},
+                        'UC_JOSTINS': {'type': 'uc_jostins'},
+                        'UC_LIU': {'type': 'uc_liu'},
                },
                'auth_public': True
             },
@@ -225,7 +244,11 @@ EMAIL_HOST = 'ppsw.cam.ac.uk'
 EMAIL_HOST_USER = ''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 25
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+
+# contact us
+#RECAPTCHA_KEY = '6LfLShwTAAAAAJrIsxVnGKL-LumEKAZIqceitkXa'
+#RECAPTCHA_SECRET = '6LfLShwTAAAAAEyDSU4veJ9jDR1EC1kLEuE7VP_r'
 
