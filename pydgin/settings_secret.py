@@ -1,7 +1,7 @@
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pcw(yn@$%+#!9tb5cs(cwhw62my4o46+%_hs&af(m(*l0!l#s3'
+SECRET_KEY = '5ez6uKJ^nV+uW;Vb?Q.GDyZU<TeWOBw<6b:>4t3UFZwVM[=g/(.bK}#H@iCAJ~wn,!eZcNjz0VziClHUMF>@2BEU?5|Vc/w_'
 
 # Memcached caching
 CACHES = {
@@ -98,11 +98,11 @@ ELASTIC = {
                 'auth_public': True
             },
             'MARKER_146': {
-                'name': 'dbsnp146_grch37', 'build': '37', 'auth_public': True,
+                'name': 'dbsnp146_grch37', 'build': 37, 'auth_public': True,
                 'idx_type': {'MARKER': {'type': 'marker'}},
             },
 #             'MARKER_138': {
-#                 'name': 'dbsnp138', 'build': '37', 'auth_public': True,
+#                 'name': 'dbsnp138', 'build': 37, 'auth_public': True,
 #                 'idx_type': {'MARKER': {'type': 'marker'}},
 #             },
             'DISEASE': {
@@ -240,7 +240,8 @@ ADMIN_URL_PATH = 'pydginadmin'
 # SMTP
 DEFAULT_FROM_EMAIL = 'immunobase-feedback@cimr.cam.ac.uk'
 SERVER_EMAIL = 'immunobase-feedback@cimr.cam.ac.uk'
-EMAIL_HOST = 'ppsw.cam.ac.uk'
+#EMAIL_HOST = 'ppsw.cam.ac.uk'
+EMAIL_HOST = '5.28.62.148'
 EMAIL_HOST_USER = ''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 25
