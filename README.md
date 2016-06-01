@@ -1,26 +1,17 @@
 # pydgin-docker
 
-Install the [docker toolbox](https://www.docker.com/products/docker-toolbox).
-For docker on MacOSX [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
-can be used to activate NFS (this avoids permission issues with mounted volumes):
+This docker-compose repository defines and runs containers for pydgin 
+(Django project), elasticsearch (document storage), postgres (user 
+authentication) and NGINX (web-site server).
+
 ```
-docker-machine create -d virtualbox --virtualbox-memory 8096 dev-nfs
-docker-machine-nfs dev-nfs
-sudo vi /etc/exports 
-sudo nfsd restart
-eval "$(docker-machine env dev-nfs)"
+git clone https://github.com/D-I-L/pydgin-docker.git
+cd pydgin-docker
+mkdir elasticsearch/config/scripts
+mkdir ./elasticsearch/esdata/
+chmod a+rwx ./elasticsearch/esdata/
 ```
 
-After creating and connecting to the docker machine (e.g. dev-nfs):
-```
-docker-compose build
-docker-compose up postgres    # creates webuser role
-docker stop $(docker ps -q)
-docker-compose up
-```
+The directory elasticsearch/esdata/ is where the index files are stored
+and this is mounted in the elasticsearch container. 
 
-This assumes the elasticsearch indices are in ./elasticsearch/esdata/ on the host machine. Run 
-the following command to find the IP address of the running nginx server:
-```
-docker-machine ip dev-nfs
-```
